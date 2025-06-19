@@ -1,6 +1,20 @@
 cmake_minimum_required(VERSION 3.21)
 project(adobe-dng-sdk)
 
+if(PROJECT_IS_TOP_LEVEL)
+    # Build in release mode unless other specified
+    set(DEFAULT_BUILD_TYPE "Release")
+    if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+        message(STATUS "Setting build type to '${DEFAULT_BUILD_TYPE}' as none was specified.")
+        set(CMAKE_BUILD_TYPE
+            "${DEFAULT_BUILD_TYPE}"
+            CACHE STRING "Choose the type of build." FORCE
+        )
+        # Set the possible values of build type for cmake-gui
+        set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+    endif()
+endif()
+
 option(BUILD_DNG_VALIDATE "Enable dng_validate command line tool" ${PROJECT_IS_TOP_LEVEL})
 option(DNG_THREAD_SAFE "Enable thread-safe support in the DNG SDK" ON)
 option(DNG_WITH_JPEG "Enable JPEG support in the DNG SDK" ON)

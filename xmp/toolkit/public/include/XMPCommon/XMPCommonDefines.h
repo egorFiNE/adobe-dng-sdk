@@ -21,7 +21,7 @@
 // ===========================
 #include "XMP_Environment.h"
 #if !XMP_WinBuild
-    #include <ciso646>
+    #include <version>
 #endif
 	// =================================================================================================
 	// Macintosh Specific Settings
