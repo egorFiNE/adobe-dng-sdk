@@ -276,4 +276,8 @@ foreach(TARGET IN ITEMS ${TARGETS})
     if(ANDROID)
         target_compile_options(${TARGET} PRIVATE $<$<CXX_COMPILER_ID:Clang>:-Wno-expansion-to-defined>)
     endif()
+
+    if(APPLE)
+        target_link_libraries(${TARGET} PRIVATE "-framework CoreFoundation -framework Carbon")
+    endif()
 endforeach()
