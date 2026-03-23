@@ -269,8 +269,8 @@ foreach(TARGET IN ITEMS ${TARGETS})
     endif()
 
     target_include_directories(${TARGET} PRIVATE ${JXL_INCLUDE_DIRS})
-    target_link_libraries(${TARGET} PRIVATE PkgConfig::JXL)
-    target_link_libraries(${TARGET} PRIVATE PkgConfig::JXL_THREADS)
+    target_link_libraries(${TARGET} PRIVATE ${JXL_LIBRARIES})
+    target_link_libraries(${TARGET} PRIVATE ${JXL_THREADS_LIBRARIES})
 
     target_compile_options(${TARGET} PRIVATE $<$<CXX_COMPILER_ID:GNU>:-Wno-stringop-overflow>)
     if(ANDROID)
